@@ -9,18 +9,38 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class MainViewModel : ViewModel(){
-    var timeValue = ObservableField<String>()
+
     var dateValue = ObservableField<String>()
+    var weekValue = ObservableField<String>()
+    var timeValue = ObservableField<String>()
+    var meridiemValue = ObservableField<String>()
+    var secView = true
+
 
     init {
         viewModelScope.launch {
             while (true) {
-                timeValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("a h:m:ss")))
-                dateValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 M월 d일")))
+                dateValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.M.d")))
+                weekValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern(" E").withLocale(
+                    Locale.forLanguageTag("en"))))
+
+                meridiemValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("a").withLocale(
+                    Locale.forLanguageTag("en"))))
+
+                if(secView){
+                    timeValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("h mm")))
+                    secView = false
+                }else{
+                    timeValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:mm")))
+                    secView = true
+                }
+
                 delay(1000)
-                Log.d("c", "${timeValue.get()}")
+
+
             }
         }
     }
