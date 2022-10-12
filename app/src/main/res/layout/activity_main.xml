@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="viewmodel"
+            name="time_data"
             type="com.example.dailybriefing.MainViewModel" />
     </data>
 
@@ -20,6 +20,8 @@
             android:layout_height="wrap_content"
             android:textSize="25sp"
 
+            android:text="@{time_data.dateValue}"
+
             app:layout_constraintBottom_toTopOf="@+id/time"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -32,6 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
+
+            android:text="@{time_data.timeValue}"
 
             android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="parent"

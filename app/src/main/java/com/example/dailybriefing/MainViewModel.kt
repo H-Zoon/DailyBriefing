@@ -1,6 +1,7 @@
 package com.example.dailybriefing
 
-import androidx.lifecycle.LiveData
+import android.util.Log
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,23 +11,19 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class MainViewModel : ViewModel(){
-    private var _timeValue = MutableLiveData<String>()
-    private var _dateValue = MutableLiveData<String>()
-
-
-    val timeValue: LiveData<String>
-        get() = _timeValue
-
-    val dateValue: LiveData<String>
-        get() = _dateValue
+    var timeValue = ObservableField<String>()
+    var dateValue = ObservableField<String>()
 
     init {
         viewModelScope.launch {
             while (true) {
-                _timeValue.value = LocalDateTime.now().format(DateTimeFormatter.ofPattern("a h:m:ss"))
-                _dateValue.value = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 M월 d일"))
+                timeValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("a h:m:ss")))
+                dateValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 M월 d일")))
                 delay(1000)
+                Log.d("c", "${timeValue.get()}")
             }
         }
     }
+
+
 }
