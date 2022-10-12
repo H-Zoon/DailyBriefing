@@ -17,7 +17,7 @@ class MainViewModel : ViewModel(){
     var weekValue = ObservableField<String>()
     var timeValue = ObservableField<String>()
     var meridiemValue = ObservableField<String>()
-    var secView = true
+    private var secView = true
 
 
     init {
@@ -30,12 +30,12 @@ class MainViewModel : ViewModel(){
                 meridiemValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("a").withLocale(
                     Locale.forLanguageTag("en"))))
 
-                if(secView){
+                secView = if(secView){
                     timeValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("h mm")))
-                    secView = false
+                    false
                 }else{
                     timeValue.set(LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:mm")))
-                    secView = true
+                    true
                 }
 
                 delay(1000)
