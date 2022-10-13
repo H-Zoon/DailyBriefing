@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.dailybriefing.databinding.FragmentInfoBinding
 import com.example.dailybriefing.databinding.FragmentWatchBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -15,10 +17,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [WatchFragment.newInstance] factory method to
+ * Use the [BlankFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class WatchFragment : BaseFragment<FragmentWatchBinding>(FragmentWatchBinding::inflate) {
+class BlankFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::inflate) {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,7 +35,19 @@ class WatchFragment : BaseFragment<FragmentWatchBinding>(FragmentWatchBinding::i
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.watchData = MainViewModel()
+        binding.recyclerview.layoutManager = LinearLayoutManager(
+            this.context, RecyclerView.HORIZONTAL,
+            false
+        )
+        val topItemListArray = ArrayList<AdapterItem>()
+
+        val adapterItem = AdapterItem()
+        adapterItem.main = "main1"
+        adapterItem.title = " title2"
+        topItemListArray.add(adapterItem)
+
+        val adapter = InfoRecyclerView(topItemListArray)
+        binding.recyclerview.adapter = adapter
     }
 
     companion object {
@@ -43,12 +57,12 @@ class WatchFragment : BaseFragment<FragmentWatchBinding>(FragmentWatchBinding::i
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment WatchFragment.
+         * @return A new instance of fragment BlankFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            WatchFragment().apply {
+            BlankFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
