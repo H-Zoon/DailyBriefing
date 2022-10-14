@@ -2,13 +2,10 @@ package com.example.dailybriefing
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailybriefing.databinding.FragmentInfoBinding
-import com.example.dailybriefing.databinding.FragmentWatchBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,15 +33,21 @@ class BlankFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::inf
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerview.layoutManager = LinearLayoutManager(
-            this.context, RecyclerView.HORIZONTAL,
+            this.context, RecyclerView.VERTICAL,
             false
         )
         val topItemListArray = ArrayList<AdapterItem>()
 
         val adapterItem = AdapterItem()
-        adapterItem.main = "main1"
-        adapterItem.title = " title2"
-        topItemListArray.add(adapterItem)
+        var i = 0
+
+        while (i<5){
+            adapterItem.main = "main$i"
+            adapterItem.title = " title$i"
+            topItemListArray.add(adapterItem)
+            i++
+        }
+
 
         val adapter = InfoRecyclerView(topItemListArray)
         binding.recyclerview.adapter = adapter

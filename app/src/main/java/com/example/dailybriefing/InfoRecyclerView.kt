@@ -4,15 +4,8 @@ import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.animation.ObjectAnimator
-import android.widget.ProgressBar
 import android.view.View
-import android.widget.ImageView
 import java.util.ArrayList
-
-/**
-이 TopRecyclerView 는 ViewHolder 의 Binding 을 통해 작성되었습니다.
- */
 
 internal class InfoRecyclerView
 constructor(private val arrayList: ArrayList<AdapterItem>) :
