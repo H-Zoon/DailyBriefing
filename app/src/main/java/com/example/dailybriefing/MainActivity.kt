@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         binding.watchData = MainViewModel()
         setContentView(binding.root)
 
+        binding.button.setOnClickListener({
+
+        })
+
     }
 
 }
