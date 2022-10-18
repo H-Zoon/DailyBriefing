@@ -21,7 +21,6 @@ abstract class BaseFragment<dBinding : ViewDataBinding>(
         savedInstanceState: Bundle?
     ): View? {
         _binding = inflate.invoke(inflater, container, false)
-
         return binding.root
     }
 

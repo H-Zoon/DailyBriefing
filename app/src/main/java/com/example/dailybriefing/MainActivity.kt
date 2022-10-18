@@ -31,17 +31,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             if (isopen) {
-                updateView(R.layout.activity_main_frag)
                 val transaction = supportFragmentManager.beginTransaction()
                     .replace(binding.briefingFrag.id, briefingFragment)
                 transaction.commit()
+                updateView(R.layout.activity_main_frag)
 
             } else {
-                updateView(R.layout.activity_main)
-
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.remove(supportFragmentManager.findFragmentById(binding.briefingFrag.id)!!)
                 transaction.commit()
+                updateView(R.layout.activity_main)
             }
             isopen = !isopen
         }
