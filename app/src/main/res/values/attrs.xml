@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClockCustomView">
+        <attr name="date" format="reference|string" />
+        <attr name="day_of_week" format="reference|string" />
+        <attr name="meridiem" format="reference|string"/>
+        <attr name="time" format="reference|string" />
+    </declare-styleable>
+</resources>

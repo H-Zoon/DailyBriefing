@@ -4,113 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="watch_data"
             type="com.example.dailybriefing.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/root"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/watch_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/root">
 
-            <LinearLayout
-                android:id="@+id/top"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/mid"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.example.dailybriefing.ClockCustomView
+                android:id="@id/watch_view"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="spread">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:id="@+id/day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/classic_bold_7"
 
-                    android:text="@{watch_data.dateValue}"
-                    android:textSize="30sp" />
-
-                <TextView
-                    android:id="@+id/week"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/modern_regular_14"
-
-                    android:text="@{watch_data.weekValue}"
-                    android:textSize="30sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/mid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/briefing_frag"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
 
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/top">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/meridiem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/modern_regular_14"
-
-                    android:text="@{watch_data.meridiemValue}"
-                    android:textSize="30sp" />
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/classic_bold_7"
-
-                    android:text="@{watch_data.timeValue}"
-                    android:textSize="75sp" />
-
-
-            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/briefing_frag"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="gone"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
