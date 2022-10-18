@@ -1,17 +1,16 @@
 package com.example.dailybriefing
 
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.TransitionManager
 import android.view.LayoutInflater
-import android.view.View
+import android.view.animation.AccelerateInterpolator
+import androidx.annotation.LayoutRes
+import androidx.constraintlayout.widget.ConstraintSet
 import com.example.dailybriefing.databinding.ActivityMainBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,10 +24,36 @@ class MainActivity : AppCompatActivity() {
         binding.watchData = MainViewModel()
         setContentView(binding.root)
 
-        binding.button.setOnClickListener({
+        var isopen = true
+        val briefingFragment = BriefingFragment()
 
-        })
+        binding.button.setOnClickListener {
+            if (isopen) {
+                updateView(R.layout.activity_main_frag)
+                val transaction = supportFragmentManager.beginTransaction()
+                    .replace(binding.briefingFrag.id, briefingFragment)
+                transaction.commit()
 
+            } else {
+                updateView(R.layout.activity_main)
+
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.remove(supportFragmentManager.findFragmentById(binding.briefingFrag.id)!!)
+                transaction.commit()
+            }
+            isopen = !isopen
+        }
+    }
+
+    fun updateView(@LayoutRes id: Int) {
+        val targetConstSet = ConstraintSet()
+        targetConstSet.clone(this, id)
+        targetConstSet.applyTo(binding.root)
+
+        val trans = ChangeBounds()
+        trans.interpolator = AccelerateInterpolator()
+        TransitionManager.beginDelayedTransition(binding.root, trans)
     }
 
 }
+
