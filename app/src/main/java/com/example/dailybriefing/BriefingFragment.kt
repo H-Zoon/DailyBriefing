@@ -39,15 +39,17 @@ class BriefingFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::
         val topItemListArray = ArrayList<AdapterItem>()
 
         val adapterItem = AdapterItem()
-        var i = 0
+        adapterItem.tag = "bus"
+        adapterItem.title = "7100"
+        adapterItem.contents = "8분뒤 도착"
 
-        while (i<5){
-            adapterItem.main = "main$i"
-            adapterItem.title = " title$i"
-            topItemListArray.add(adapterItem)
-            i++
-        }
+        topItemListArray.add(adapterItem)
 
+        val adapterItem2 = AdapterItem()
+        adapterItem2.tag = "weather"
+        adapterItem2.title = "김포시"
+        adapterItem2.contents = "맑음"
+        topItemListArray.add(adapterItem2)
 
         val adapter = InfoRecyclerView(topItemListArray)
         binding.recyclerview.adapter = adapter

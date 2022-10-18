@@ -5,6 +5,7 @@ import android.widget.TextView
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import java.util.ArrayList
 
 internal class InfoRecyclerView
@@ -19,8 +20,11 @@ constructor(private val arrayList: ArrayList<AdapterItem>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
         viewHolder.title.text = arrayList[position].title
-        viewHolder.main.text = arrayList[position].main
-        //viewHolder.icon.setImageIcon(arrayList[position].icon)
+        viewHolder.main.text = arrayList[position].contents
+        when(arrayList[position].tag){
+            "bus" ->  viewHolder.icon.setImageResource(R.drawable.icon_bus)
+            "weather" ->  viewHolder.icon.setImageResource(R.drawable.icon_weather)
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: List<Any>) {
@@ -40,13 +44,13 @@ constructor(private val arrayList: ArrayList<AdapterItem>) :
     class ViewHolder constructor(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView
         val main: TextView
-        //val icon: ImageView
+        val icon: ImageView
 
         //ViewHolder
         init {
             title = view.findViewById<View>(R.id.title) as TextView
             main = view.findViewById<View>(R.id.main) as TextView
-            //icon = view.findViewById<View>(R.id.icon) as ImageView
+            icon = view.findViewById<View>(R.id.icon) as ImageView
         }
     }
 }

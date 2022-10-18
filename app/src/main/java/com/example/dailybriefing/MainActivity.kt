@@ -24,13 +24,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
-        var isopen = true
+        var briefingIsOpen = false
         val briefingFragment = BriefingFragment()
 
-
-
         binding.button.setOnClickListener {
-            if (isopen) {
+            if (!briefingIsOpen) {
                 val transaction = supportFragmentManager.beginTransaction()
                     .replace(binding.briefingFrag.id, briefingFragment)
                 transaction.commit()
@@ -42,13 +40,12 @@ class MainActivity : AppCompatActivity() {
                 transaction.commit()
                 updateView(R.layout.activity_main)
             }
-            isopen = !isopen
+            briefingIsOpen = !briefingIsOpen
         }
-
 
     }
 
-    fun updateView(@LayoutRes id: Int) {
+    private fun updateView(@LayoutRes id: Int) {
         val targetConstSet = ConstraintSet()
         targetConstSet.clone(this, id)
         targetConstSet.applyTo(binding.root)
