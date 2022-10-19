@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "621002718910",
+    "firebase_url": "https://dailybriefing-8d59a-default-rtdb.firebaseio.com",
+    "project_id": "dailybriefing-8d59a",
+    "storage_bucket": "dailybriefing-8d59a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621002718910:android:c934189ded612e028da8ef",
+        "android_client_info": {
+          "package_name": "com.example.dailybriefing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621002718910-6jpno56bo9in2atfrbj0sgjeuf1vjkct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS92-SpmgiJmxCXaZu6cLEjj7vLp3ytrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621002718910-6jpno56bo9in2atfrbj0sgjeuf1vjkct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
