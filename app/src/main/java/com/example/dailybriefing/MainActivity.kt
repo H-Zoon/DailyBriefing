@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import com.example.dailybriefing.databinding.ActivityMainBinding
+import com.example.dailybriefing.fragment.BriefingFragment
 
 class MainActivity : AppCompatActivity() {
 

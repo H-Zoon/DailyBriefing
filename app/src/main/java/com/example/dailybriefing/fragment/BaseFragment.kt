@@ -1,4 +1,4 @@
-package com.example.dailybriefing
+package com.example.dailybriefing.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
