@@ -14,7 +14,6 @@ import com.example.dailybriefing.databinding.FragmentWeatherBinding
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-
 class WeatherFragment : BaseFragment<FragmentWeatherBinding>(FragmentWeatherBinding::inflate) {
     // TODO: Rename and change types of parameters
     private var param1: String? = null

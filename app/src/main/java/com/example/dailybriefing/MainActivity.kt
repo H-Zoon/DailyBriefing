@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.view.LayoutInflater
@@ -20,7 +19,7 @@ import com.example.dailybriefing.fragment.BriefingFragment
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(App.context())
+        val prefs: SharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(App.context())
     }
 
     lateinit var binding: ActivityMainBinding
