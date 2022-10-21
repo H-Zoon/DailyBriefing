@@ -1,6 +1,7 @@
 package com.example.dailybriefing
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -74,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         binding.setting.setOnClickListener {
             nightModeChanger()
         }
-
     }
 
     private fun updateView(@LayoutRes id: Int) {

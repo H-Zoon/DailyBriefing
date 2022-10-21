@@ -1,4 +1,4 @@
-package com.example.setting
+package com.example.bushelp
 
 import org.junit.Test
 

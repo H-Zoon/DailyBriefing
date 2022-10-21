@@ -14,5 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DailyBriefing"
 include ':app'
-include ':http'
-include ':setting'
+include ':bushelp'

@@ -1,14 +1,9 @@
 package com.example.dailybriefing.fragment
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.example.dailybriefing.R
 import com.example.dailybriefing.databinding.FragmentBusBinding
-import com.example.http.HttpSocket
+import com.example.bushelp.HttpSocket
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +26,7 @@ class BusFragment : BaseFragment<FragmentBusBinding>(FragmentBusBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        HttpSocket().getBusInfo(10, "dksqkd"){
+        HttpSocket().getBusInfo("전통시장"){
             binding.textView.text = it
         }
     }
